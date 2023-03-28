@@ -2,9 +2,7 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
-	"net/http"
 	"os"
 	"time"
 
@@ -44,7 +42,7 @@ func main() {
 }
 
 func checkAndCloseIssues(ctx context.Context, client *github.Client) error {
-	issues, _, err := client.Issues.ListByRepo(ctx, owner, repo, &github.IssueListOptions{
+	issues, _, err := client.Issues.ListByRepo(ctx, owner, repo, &github.IssueListByRepoOptions{
 		State: "open",
 	})
 
